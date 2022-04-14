@@ -3,16 +3,18 @@ import 'package:marvel/util/api_util.dart';
 
 @reflector
 class Character extends BaseModel {
-  int? id;
-  String? name;
-  List<dynamic>? comics;
-  List<dynamic>? series;
+  int id;
+  String name;
+  String thumbnail;
+  String description;
+  String thumbnailFormat;
 
   Character.fromJson(Map<String, dynamic> map)
       : id = map["id"],
         name = map["name"],
-        comics = map["comics"],
-        series = map["series"],
+        description = map["description"],
+        thumbnail = map["thumbnail"]["path"],
+        thumbnailFormat = map["thumbnail"]["extension"],
         super.fromJson(map);
 
   @override

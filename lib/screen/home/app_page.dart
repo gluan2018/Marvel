@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../character_list_page.dart';
+import '../list/character_list_page.dart';
 
 // class App extends StatefulWidget {
 //   const App({Key? key}) : super(key: key);

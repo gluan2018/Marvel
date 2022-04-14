@@ -13,27 +13,43 @@ class CardCharacter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: callback,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: AspectRatio(
+        aspectRatio: 21 / 9,
+        child: Stack(
+          alignment: Alignment.bottomLeft,
           children: [
-            SizedBox(
-              width: 40,
-              height: 40,
-              child: CircleAvatar(
-                radius: 20,
-                child: Image.network(''),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                '${character.thumbnail}.${character.thumbnailFormat}',
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.centerRight,
+                  end: Alignment.centerLeft,
+                  colors: <Color>[Color(0xdd000000), Color(0x77000000)],
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-              child: Column(
-                children: [
-                  Text('Nome: ' + (character.name ?? '')),
-                  Text('Comics: ${character.comics?.length ?? 0}, Séries: ${character.series?.length ?? 0}'),
-                ],
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                character.name,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            ),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(8),
+                onTap: callback,
               ),
             )
           ],

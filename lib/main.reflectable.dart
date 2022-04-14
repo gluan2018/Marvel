@@ -3,7 +3,8 @@
 // @dart = 2.12
 
 import 'dart:core';
-import 'package:marvel/api/model/character.dart' as prefix1;
+import 'package:marvel/api/model/base/base_response.dart' as prefix1;
+import 'package:marvel/api/model/character.dart' as prefix2;
 import 'package:marvel/util/api_util.dart' as prefix0;
 
 // ignore_for_file: camel_case_types
@@ -23,61 +24,155 @@ final _data = <r.Reflectable, r.ReflectorData>{
   const prefix0.Reflector(): r.ReflectorData(
       <m.TypeMirror>[
         r.NonGenericClassMirrorImpl(
-            r'Character',
-            r'.Character',
+            r'BaseResponse',
+            r'.BaseResponse',
             7,
             0,
             const prefix0.Reflector(),
-            const <int>[-1],
-            null,
-            null,
+            const <int>[0, 5, 6, 7, 10],
+            const <int>[11, 12, 13, 14, 15, 5, 6, 7, 8, 9],
+            const <int>[],
             -1,
             {},
             {},
             {
               r'fromJson': (bool b) =>
-                  (map) => b ? prefix1.Character.fromJson(map) : null
+                  (map) => b ? prefix1.BaseResponse.fromJson(map) : null
             },
             -1,
             -1,
             const <int>[-1],
             null,
+            null),
+        r.NonGenericClassMirrorImpl(
+            r'Character',
+            r'.Character',
+            7,
+            1,
+            const prefix0.Reflector(),
+            const <int>[1, 2, 3, 4, 16, 25],
+            const <int>[11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+            const <int>[],
+            -1,
+            {},
+            {},
             {
-              r'==': 1,
-              r'toString': 0,
-              r'noSuchMethod': 1,
-              r'hashCode': 0,
-              r'runtimeType': 0,
-              r'toJson': 0,
-              r'id': 0,
-              r'id=': 1,
-              r'name': 0,
-              r'name=': 1
-            })
+              r'fromJson': (bool b) =>
+                  (map) => b ? prefix2.Character.fromJson(map) : null
+            },
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            null)
       ],
-      null,
-      null,
-      <Type>[prefix1.Character],
-      1,
+      <m.DeclarationMirror>[
+        r.VariableMirrorImpl(r'data', 2129925, 0, const prefix0.Reflector(), -1,
+            2, 3, null, null),
+        r.VariableMirrorImpl(
+            r'id', 32773, 1, const prefix0.Reflector(), -1, 4, 4, null, null),
+        r.VariableMirrorImpl(
+            r'name', 32773, 1, const prefix0.Reflector(), -1, 5, 5, null, null),
+        r.VariableMirrorImpl(r'comics', 2129925, 1, const prefix0.Reflector(),
+            -1, 6, 7, null, null),
+        r.VariableMirrorImpl(r'series', 2129925, 1, const prefix0.Reflector(),
+            -1, 6, 7, null, null),
+        r.MethodMirrorImpl(r'castList', 4325378, 0, -1, 8, 9, null,
+            const <int>[], const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'cast', 2, 0, -1, -1, -1, null, const <int>[],
+            const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'toJson', 4325378, 0, -1, 2, 3, null, const <int>[],
+            const prefix0.Reflector(), null),
+        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 0, 8),
+        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 0, 9),
+        r.MethodMirrorImpl(r'fromJson', 0, 0, -1, 0, 0, null, const <int>[0],
+            const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'==', 131074, -1, -1, 10, 10, null, const <int>[2],
+            const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'toString', 131074, -1, -1, 11, 11, null,
+            const <int>[], const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'noSuchMethod', 65538, -1, -1, -1, -1, null,
+            const <int>[3], const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'hashCode', 131075, -1, -1, 12, 12, null,
+            const <int>[], const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'runtimeType', 131075, -1, -1, 13, 13, null,
+            const <int>[], const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'toJson', 4325378, 1, -1, 2, 3, null, const <int>[],
+            const prefix0.Reflector(), null),
+        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 1, 17),
+        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 1, 18),
+        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 2, 19),
+        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 2, 20),
+        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 3, 21),
+        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 3, 22),
+        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 4, 23),
+        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 4, 24),
+        r.MethodMirrorImpl(r'fromJson', 0, 1, -1, 1, 1, null, const <int>[4],
+            const prefix0.Reflector(), null)
+      ],
+      <m.ParameterMirror>[
+        r.ParameterMirrorImpl(r'map', 2129926, 10, const prefix0.Reflector(),
+            -1, 2, 3, null, null, null, null),
+        r.ParameterMirrorImpl(r'_data', 2130022, 9, const prefix0.Reflector(),
+            -1, 2, 3, null, null, null, null),
+        r.ParameterMirrorImpl(r'other', 32774, 11, const prefix0.Reflector(),
+            -1, 14, 14, null, null, null, null),
+        r.ParameterMirrorImpl(r'invocation', 32774, 13,
+            const prefix0.Reflector(), -1, 15, 15, null, null, null, null),
+        r.ParameterMirrorImpl(r'map', 2129926, 25, const prefix0.Reflector(),
+            -1, 2, 3, null, null, null, null),
+        r.ParameterMirrorImpl(r'_id', 32870, 18, const prefix0.Reflector(), -1,
+            4, 4, null, null, null, null),
+        r.ParameterMirrorImpl(r'_name', 32870, 20, const prefix0.Reflector(),
+            -1, 5, 5, null, null, null, null),
+        r.ParameterMirrorImpl(r'_comics', 2130022, 22,
+            const prefix0.Reflector(), -1, 6, 7, null, null, null, null),
+        r.ParameterMirrorImpl(r'_series', 2130022, 24,
+            const prefix0.Reflector(), -1, 6, 7, null, null, null, null)
+      ],
+      <Type>[
+        prefix1.BaseResponse,
+        prefix2.Character,
+        const m.TypeValue<Map<String, dynamic>>().type,
+        Map,
+        int,
+        String,
+        const m.TypeValue<List<dynamic>>().type,
+        List,
+        const r.FakeType(r'dart.core.List<T>'),
+        List,
+        bool,
+        String,
+        int,
+        Type,
+        Object,
+        Invocation
+      ],
+      2,
       {
         r'==': (dynamic instance) => (x) => instance == x,
         r'toString': (dynamic instance) => instance.toString,
         r'noSuchMethod': (dynamic instance) => instance.noSuchMethod,
         r'hashCode': (dynamic instance) => instance.hashCode,
         r'runtimeType': (dynamic instance) => instance.runtimeType,
+        r'castList': (dynamic instance) => instance.castList,
+        r'cast': (dynamic instance) => instance.cast,
         r'toJson': (dynamic instance) => instance.toJson,
+        r'data': (dynamic instance) => instance.data,
         r'id': (dynamic instance) => instance.id,
-        r'name': (dynamic instance) => instance.name
+        r'name': (dynamic instance) => instance.name,
+        r'comics': (dynamic instance) => instance.comics,
+        r'series': (dynamic instance) => instance.series
       },
       {
+        r'data=': (dynamic instance, value) => instance.data = value,
         r'id=': (dynamic instance, value) => instance.id = value,
-        r'name=': (dynamic instance, value) => instance.name = value
+        r'name=': (dynamic instance, value) => instance.name = value,
+        r'comics=': (dynamic instance, value) => instance.comics = value,
+        r'series=': (dynamic instance, value) => instance.series = value
       },
       null,
-      [
-        const [0, 0, null],
-        const [1, 0, null]
-      ])
+      [])
 };
 
 final _memberSymbolMap = null;

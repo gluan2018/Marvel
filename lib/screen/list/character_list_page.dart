@@ -4,6 +4,9 @@ import 'package:marvel/api/model/character.dart';
 import 'package:marvel/api/service/character_interface.dart';
 import 'package:marvel/screen/character_viewmodel.dart';
 import 'package:marvel/view/card_character.dart';
+import 'package:marvel/view/message_error.dart';
+
+import '../character_details_page.dart';
 
 class CharacterList extends StatefulWidget {
   final CharacterInterface characterInterface;
@@ -24,9 +27,9 @@ class _CharacterListState extends State<CharacterList> {
   @override
   void initState() {
     _pageController.addPageRequestListener((pageKey) {
-      _viewModel.all(_pageController);
+      _viewModel.all(pageController: _pageController);
     });
-    _viewModel.all(_pageController);
+    _viewModel.all(pageController: _pageController);
     super.initState();
   }
 
@@ -39,27 +42,45 @@ class _CharacterListState extends State<CharacterList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        toolbarHeight: 80,
+        titleTextStyle: Theme.of(context).textTheme.headline4,
+        title: const Text('Marvel'),
+      ),
       body: SafeArea(
         child: PagedListView<int, Character>(
           pagingController: _pageController,
           builderDelegate: PagedChildBuilderDelegate<Character>(
-            itemBuilder: (context, item, index) {
+            itemBuilder: (_, item, index) {
               return CardCharacter(
                 character: item,
-                callback: () {},
+                callback: () => Navigator.push(context, MaterialPageRoute(builder: (_) => CharacterDetailsPage(character: item))),
               );
             },
             firstPageProgressIndicatorBuilder: (context) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             },
             newPageProgressIndicatorBuilder: (context) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             },
             firstPageErrorIndicatorBuilder: (context) {
-              return Text('error');
+              return MessageError(
+                messsage: 'Não foi possível carregar os personagens',
+                callback: () {
+                    _pageController.refresh();
+                    _viewModel.all(pageController: _pageController, isReload: true);
+                },
+              );
             },
             newPageErrorIndicatorBuilder: (context) {
-              return Text('error');
+              return MessageError(
+                messsage: 'Não foi possível carregar mais personagens',
+                callback: () {
+                  _pageController.refresh();
+                  _viewModel.all(pageController: _pageController, isReload: true);
+                },
+              );
             },
           ),
         ),

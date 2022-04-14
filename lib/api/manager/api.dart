@@ -1,31 +1,37 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../util/api_util.dart';
-import '../model/base_model.dart';
-
 bool apiIsInitialized = false;
-String appVersion = "";
+String baseUrl = 'https://gateway.marvel.com:443/v1/public/';
 
 late Dio _dio;
 
-Dio createDio() => Dio(BaseOptions(
-      baseUrl: "http://api.epopi.brlinvestimentos.com/api",
-      headers: {
-        "AppVersion": appVersion,
+Dio createDio() {
+  final dio = Dio(BaseOptions(
+    baseUrl: baseUrl,
+    responseType: ResponseType.json,
+    validateStatus: (statusCode) => statusCode != null,
+  ));
+
+  dio.interceptors.add(
+    InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        options.queryParameters.addAll(_createHash());
+        handler.next(options);
       },
-      validateStatus: (statusCode) => statusCode != null,
-    ))._apply((dio) {
-      dio.interceptors.add(
-        InterceptorsWrapper(
-          onError: (error, handler) async {},
-          onRequest: (options, handler) async {},
-        ),
-      );
-      if (kDebugMode) dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
-    });
+    ),
+  );
+
+  if (kDebugMode) {
+    dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
+  }
+
+  return dio;
+}
 
 abstract class API {
   static Dio get currentDio => _dio;
@@ -36,50 +42,16 @@ abstract class API {
   }
 }
 
-///Represents data response from server, and try create object from T.
-class DataResponse<T extends BaseModel> {
-  ///Response from server.
-  Response<String> response;
+String _apiKey = "e3461f78134fa07b7bc9fce12528a161";
+String _privateKey = "5c87b21f0808e13ce8e04b4a53ccd7d53e8a72ab";
 
-  DataResponse(this.response);
+Map<String, String> _createHash() {
+  final time = DateTime.now().millisecondsSinceEpoch.toString();
+  final valueMD5 = md5.convert(utf8.encode(time + _privateKey + _apiKey)).toString();
 
-  ///Create object from T and Response<String>.
-  T get data => toObject<T>(response.data!);
-
-  //Return if status code is between 200 and 300.
-  bool get isSuccessful => response.isSuccessful;
-}
-
-class ListDataResponse<T extends BaseModel> {
-  Response<String>? response;
-
-  ListDataResponse(this.response);
-
-  List<T> get data {
-    if (response == null || response!.data == null) {
-      throw Exception("A resposta ou corpo não pode ser nulo");
-    }
-    return toListObject<T>(response!.data!);
-  }
-
-  bool get isSuccessful => response?.isSuccessful ?? false;
-}
-
-extension DioExtends on Dio {
-  Dio _apply(Function(Dio) function) {
-    function(this);
-    return this;
-  }
-}
-
-extension ResponseData on Response<String> {
-  DataResponse<T> response<T extends BaseModel>() => DataResponse<T>(this);
-
-  ListDataResponse<T> responseList<T extends BaseModel>() => ListDataResponse<T>(this);
-}
-
-extension StatusCode on Response {
-  bool get isSuccessful {
-    return statusCode != null && (statusCode ?? -1) >= 200 && (statusCode ?? -1) <= 300;
-  }
+  return {
+    "ts": time,
+    "hash": valueMD5,
+    "apikey": _apiKey,
+  };
 }

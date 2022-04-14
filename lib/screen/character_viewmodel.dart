@@ -9,23 +9,30 @@ class CharacterViewModel {
 
   final CharacterInterface characterInterface;
 
-  int _currentPage = 0;
+  int _currentPage = 1;
 
-  void all(PagingController<int, Character> pageController) async {
+  void all({
+    required PagingController<int, Character> pageController,
+    bool isReload = false,
+  }) async {
     final response = await characterInterface.all(50, _currentPage).catchError((error) {
-      pageController.error = error;
+      pageController.error = Error();
     });
+
     if (response.isSuccessful) {
-      _currentPage++;
-      final canLoadMore = response.data.length == 50;
+      if (!isReload) {
+        _currentPage++;
+      }
+      final list = response.data.castList<Character>();
+
+      final canLoadMore = list.length == 50;
       if (canLoadMore) {
-        pageController.appendPage(response.data, _currentPage);
+        pageController.appendPage(list, _currentPage);
       } else {
-        pageController.appendLastPage(response.data);
+        pageController.appendLastPage(list);
       }
     } else {
       pageController.error = response.response;
     }
   }
-
 }
