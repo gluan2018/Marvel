@@ -10,7 +10,9 @@ String baseUrl = 'https://gateway.marvel.com:443/v1/public/';
 
 late Dio _dio;
 
-Dio createDio() {
+Dio createDio({
+  bool showLog = true,
+}) {
   final dio = Dio(BaseOptions(
     baseUrl: baseUrl,
     responseType: ResponseType.json,
@@ -26,7 +28,7 @@ Dio createDio() {
     ),
   );
 
-  if (kDebugMode) {
+  if (kDebugMode && showLog) {
     dio.interceptors.add(LogInterceptor(requestBody: true, responseBody: true));
   }
 
@@ -36,8 +38,10 @@ Dio createDio() {
 abstract class API {
   static Dio get currentDio => _dio;
 
-  static Future loadAPI() async {
-    _dio = createDio();
+  static Future loadAPI({
+    bool showLog = true,
+  }) async {
+    _dio = createDio(showLog: showLog);
     apiIsInitialized = true;
   }
 }

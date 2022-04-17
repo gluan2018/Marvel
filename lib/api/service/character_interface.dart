@@ -1,11 +1,14 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:marvel/api/model/base/base_response.dart';
+import 'package:marvel/api/model/media/media_details.dart';
 import 'package:marvel/util/api_util.dart';
 
 abstract class CharacterInterface {
   Future<DataResponse<BaseResponse>> all(int limit, int offset);
 
-  Future<DataResponse<BaseResponse>> findCharacter(int id);
+  Future<MediaDetails> media(String url);
 
   factory CharacterInterface.create({required Dio dio}) => _CharacterInterface(dio: dio);
 
@@ -26,8 +29,8 @@ class _CharacterInterface extends CharacterInterface {
   }
 
   @override
-  Future<DataResponse<BaseResponse>> findCharacter(int id) async {
-    final response = await dio.get<String>('characters/$id');
-    return response.response();
+  Future<MediaDetails> media(String url) async {
+    final response = await dio.requestUri<String>(Uri.parse(url));
+    return response.response<BaseResponse>().data.castList<MediaDetails>()[0];
   }
 }

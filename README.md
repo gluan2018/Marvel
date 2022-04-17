@@ -1,16 +1,24 @@
-# marvel
+# Marvel
+=====================================
 
-Prova de mobile usando a API da Marvel
+## Descrição
+<p align="center">Prova de mobile usando a API da Marvel</p>
+=====================================
 
 ## Getting Started
+=====================================
 
-This project is a starting point for a Flutter application.
+Flutter:
+Versão: 2.10.3
 
-A few resources to get you started if this is your first Flutter project:
+Dart:
+Versão: 2.16.1
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Bibliotecas usadas:
+=====================================
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [DIO: Framework para requisições HTTP](https://pub.dev/packages/dio)
+- [MOBX: Framework para gerenciamento de estado](https://pub.dev/packages/mobx)
+- [CRYPTO: Conjuntos de algoritmos de criptografia](https://pub.dev/packages/crypto)
+- [REFLECTABLE: Pacote para reflexão de objetos em runtime](https://pub.dev/packages/reflectable)
+- [INFINITE SCROLL: Listagem com scroll infinito](https://pub.dev/packages/infinite_scroll_pagination)

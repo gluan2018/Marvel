@@ -12,13 +12,18 @@ class Reflector extends Reflectable {
 }
 
 class DataResponse<T extends BaseModel> {
-  final Response<String> response;
+  final Response<String>? response;
 
   DataResponse(this.response);
 
-  T get data => toObject<T>(response.data!);
+  T get data {
+    if (response == null || response!.data == null) {
+      throw Exception("A resposta ou corpo não pode ser nulo");
+    }
+    return toObject<T>(response!.data!);
+  }
 
-  bool get isSuccessful => response.isSuccessful;
+  bool get isSuccessful => response?.isSuccessful ?? false;
 }
 
 class ListDataResponse<T extends BaseModel> {

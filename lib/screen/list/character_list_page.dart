@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:marvel/api/model/character.dart';
 import 'package:marvel/api/service/character_interface.dart';
-import 'package:marvel/screen/character_viewmodel.dart';
-import 'package:marvel/view/card_character.dart';
+import 'package:marvel/screen/details/character_details_page.dart';
+import 'package:marvel/screen/viewmodel/character_viewmodel.dart';
+import 'package:marvel/view/card/card_character.dart';
 import 'package:marvel/view/message_error.dart';
-
-import '../character_details_page.dart';
 
 class CharacterList extends StatefulWidget {
   final CharacterInterface characterInterface;
@@ -43,45 +42,40 @@ class _CharacterListState extends State<CharacterList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: 80,
-        titleTextStyle: Theme.of(context).textTheme.headline4,
         title: const Text('Marvel'),
       ),
       body: SafeArea(
         child: PagedListView<int, Character>(
           pagingController: _pageController,
           builderDelegate: PagedChildBuilderDelegate<Character>(
-            itemBuilder: (_, item, index) {
-              return CardCharacter(
-                character: item,
-                callback: () => Navigator.push(context, MaterialPageRoute(builder: (_) => CharacterDetailsPage(character: item))),
-              );
-            },
-            firstPageProgressIndicatorBuilder: (context) {
-              return const Center(child: CircularProgressIndicator());
-            },
-            newPageProgressIndicatorBuilder: (context) {
-              return const Center(child: CircularProgressIndicator());
-            },
-            firstPageErrorIndicatorBuilder: (context) {
-              return MessageError(
-                messsage: 'Não foi possível carregar os personagens',
-                callback: () {
-                    _pageController.refresh();
-                    _viewModel.all(pageController: _pageController, isReload: true);
-                },
-              );
-            },
-            newPageErrorIndicatorBuilder: (context) {
-              return MessageError(
-                messsage: 'Não foi possível carregar mais personagens',
-                callback: () {
-                  _pageController.refresh();
-                  _viewModel.all(pageController: _pageController, isReload: true);
-                },
-              );
-            },
+            itemBuilder: (_, item, index) => CardCharacter(
+              character: item,
+              callback: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CharacterDetailsPage(
+                    character: item,
+                    characterInterface: widget.characterInterface,
+                  ),
+                ),
+              ),
+            ),
+            firstPageProgressIndicatorBuilder: (context) => const Center(child: CircularProgressIndicator()),
+            newPageProgressIndicatorBuilder: (context) => const Center(child: CircularProgressIndicator()),
+            firstPageErrorIndicatorBuilder: (context) => MessageError(
+              message: 'Não foi possível carregar os personagens',
+              callback: () {
+                _pageController.refresh();
+                _viewModel.all(pageController: _pageController, isReload: true);
+              },
+            ),
+            newPageErrorIndicatorBuilder: (context) => MessageError(
+              message: 'Não foi possível carregar mais personagens',
+              callback: () {
+                _pageController.refresh();
+                _viewModel.all(pageController: _pageController, isReload: true);
+              },
+            ),
           ),
         ),
       ),

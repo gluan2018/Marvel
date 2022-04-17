@@ -3,10 +3,10 @@
 // @dart = 2.12
 
 import 'dart:core';
-import 'package:marvel/api/model/base/base_response.dart' as prefix3;
+import 'package:marvel/api/model/base/base_response.dart' as prefix4;
 import 'package:marvel/api/model/character.dart' as prefix1;
-import 'package:marvel/api/model/media/media.dart' as prefix4;
-import 'package:marvel/api/model/media/media_details.dart' as prefix2;
+import 'package:marvel/api/model/media/media.dart' as prefix2;
+import 'package:marvel/api/model/media/media_details.dart' as prefix3;
 import 'package:marvel/util/api_util.dart' as prefix0;
 
 // ignore_for_file: prefer_adjacent_string_concatenation
@@ -69,8 +69,8 @@ final _data = <r.Reflectable, r.ReflectorData>{
             null,
             null),
         r.NonGenericClassMirrorImpl(
-            r'MediaDetails',
-            r'.MediaDetails',
+            r'Media',
+            r'.Media',
             7,
             1,
             const prefix0.Reflector(),
@@ -82,7 +82,28 @@ final _data = <r.Reflectable, r.ReflectorData>{
             {},
             {
               r'fromJson': (bool b) =>
-                  (map) => b ? prefix2.MediaDetails.fromJson(map) : null
+                  (map) => b ? prefix2.Media.fromJson(map) : null
+            },
+            -1,
+            -1,
+            const <int>[-1],
+            null,
+            null),
+        r.NonGenericClassMirrorImpl(
+            r'MediaDetails',
+            r'.MediaDetails',
+            7,
+            2,
+            const prefix0.Reflector(),
+            const <int>[10, 11, 42, 47],
+            const <int>[31, 32, 33, 34, 35, 42, 43, 44, 45, 46],
+            const <int>[],
+            -1,
+            {},
+            {},
+            {
+              r'fromJson': (bool b) =>
+                  (map) => b ? prefix3.MediaDetails.fromJson(map) : null
             },
             -1,
             -1,
@@ -93,30 +114,9 @@ final _data = <r.Reflectable, r.ReflectorData>{
             r'BaseResponse',
             r'.BaseResponse',
             7,
-            2,
-            const prefix0.Reflector(),
-            const <int>[10, 42, 43, 44, 47],
-            const <int>[31, 32, 33, 34, 35, 42, 43, 44, 45, 46],
-            const <int>[],
-            -1,
-            {},
-            {},
-            {
-              r'fromJson': (bool b) =>
-                  (map) => b ? prefix3.BaseResponse.fromJson(map) : null
-            },
-            -1,
-            -1,
-            const <int>[-1],
-            null,
-            null),
-        r.NonGenericClassMirrorImpl(
-            r'Media',
-            r'.Media',
-            7,
             3,
             const prefix0.Reflector(),
-            const <int>[11, 12, 48, 53],
+            const <int>[12, 48, 49, 50, 53],
             const <int>[31, 32, 33, 34, 35, 48, 49, 50, 51, 52],
             const <int>[],
             -1,
@@ -124,7 +124,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             {},
             {
               r'fromJson': (bool b) =>
-                  (map) => b ? prefix4.Media.fromJson(map) : null
+                  (map) => b ? prefix4.BaseResponse.fromJson(map) : null
             },
             -1,
             -1,
@@ -149,16 +149,16 @@ final _data = <r.Reflectable, r.ReflectorData>{
             -1, 6, 7, null, null),
         r.VariableMirrorImpl(r'history', 2129925, 0, const prefix0.Reflector(),
             -1, 6, 7, null, null),
-        r.VariableMirrorImpl(r'thumbnail', 32773, 1, const prefix0.Reflector(),
-            -1, 8, 8, null, null),
-        r.VariableMirrorImpl(r'thumbnailFormat', 32773, 1,
-            const prefix0.Reflector(), -1, 8, 8, null, null),
-        r.VariableMirrorImpl(r'data', 2129925, 2, const prefix0.Reflector(), -1,
-            9, 10, null, null),
         r.VariableMirrorImpl(
-            r'name', 32773, 3, const prefix0.Reflector(), -1, 5, 5, null, null),
-        r.VariableMirrorImpl(r'resourceUri', 32773, 3,
+            r'name', 32773, 1, const prefix0.Reflector(), -1, 5, 5, null, null),
+        r.VariableMirrorImpl(r'resourceUri', 32773, 1,
             const prefix0.Reflector(), -1, 5, 5, null, null),
+        r.VariableMirrorImpl(r'thumbnail', 32773, 2, const prefix0.Reflector(),
+            -1, 8, 8, null, null),
+        r.VariableMirrorImpl(r'thumbnailFormat', 32773, 2,
+            const prefix0.Reflector(), -1, 8, 8, null, null),
+        r.VariableMirrorImpl(r'data', 2129925, 3, const prefix0.Reflector(), -1,
+            9, 10, null, null),
         r.MethodMirrorImpl(r'toJson', 4325378, 0, -1, 9, 10, null,
             const <int>[], const prefix0.Reflector(), null),
         r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 0, 14),
@@ -197,23 +197,23 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 9, 40),
         r.MethodMirrorImpl(r'fromJson', 0, 1, -1, 1, 1, null, const <int>[11],
             const prefix0.Reflector(), null),
-        r.MethodMirrorImpl(r'castList', 4325378, 2, -1, 13, 14, null,
-            const <int>[], const prefix0.Reflector(), null),
-        r.MethodMirrorImpl(r'cast', 2, 2, -1, -1, -1, null, const <int>[],
-            const prefix0.Reflector(), null),
         r.MethodMirrorImpl(r'toJson', 4325378, 2, -1, 9, 10, null,
             const <int>[], const prefix0.Reflector(), null),
-        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 10, 45),
-        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 10, 46),
+        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 10, 43),
+        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 10, 44),
+        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 11, 45),
+        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 11, 46),
         r.MethodMirrorImpl(r'fromJson', 0, 2, -1, 2, 2, null, const <int>[14],
+            const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'castList', 4325378, 3, -1, 13, 14, null,
+            const <int>[], const prefix0.Reflector(), null),
+        r.MethodMirrorImpl(r'cast', 2, 3, -1, -1, -1, null, const <int>[],
             const prefix0.Reflector(), null),
         r.MethodMirrorImpl(r'toJson', 4325378, 3, -1, 9, 10, null,
             const <int>[], const prefix0.Reflector(), null),
-        r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 11, 49),
-        r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 11, 50),
         r.ImplicitGetterMirrorImpl(const prefix0.Reflector(), 12, 51),
         r.ImplicitSetterMirrorImpl(const prefix0.Reflector(), 12, 52),
-        r.MethodMirrorImpl(r'fromJson', 0, 3, -1, 3, 3, null, const <int>[16],
+        r.MethodMirrorImpl(r'fromJson', 0, 3, -1, 3, 3, null, const <int>[17],
             const prefix0.Reflector(), null)
       ],
       <m.ParameterMirror>[
@@ -241,29 +241,29 @@ final _data = <r.Reflectable, r.ReflectorData>{
             const prefix0.Reflector(), -1, 16, 16, null, null, null, null),
         r.ParameterMirrorImpl(r'map', 2129926, 41, const prefix0.Reflector(),
             -1, 9, 10, null, null, null, null),
-        r.ParameterMirrorImpl(r'_thumbnail', 32870, 38,
-            const prefix0.Reflector(), -1, 8, 8, null, null, null, null),
-        r.ParameterMirrorImpl(r'_thumbnailFormat', 32870, 40,
-            const prefix0.Reflector(), -1, 8, 8, null, null, null, null),
+        r.ParameterMirrorImpl(r'_name', 32870, 38, const prefix0.Reflector(),
+            -1, 5, 5, null, null, null, null),
+        r.ParameterMirrorImpl(r'_resourceUri', 32870, 40,
+            const prefix0.Reflector(), -1, 5, 5, null, null, null, null),
         r.ParameterMirrorImpl(r'map', 2129926, 47, const prefix0.Reflector(),
             -1, 9, 10, null, null, null, null),
-        r.ParameterMirrorImpl(r'_data', 2130022, 46, const prefix0.Reflector(),
-            -1, 9, 10, null, null, null, null),
+        r.ParameterMirrorImpl(r'_thumbnail', 32870, 44,
+            const prefix0.Reflector(), -1, 8, 8, null, null, null, null),
+        r.ParameterMirrorImpl(r'_thumbnailFormat', 32870, 46,
+            const prefix0.Reflector(), -1, 8, 8, null, null, null, null),
         r.ParameterMirrorImpl(r'map', 2129926, 53, const prefix0.Reflector(),
             -1, 9, 10, null, null, null, null),
-        r.ParameterMirrorImpl(r'_name', 32870, 50, const prefix0.Reflector(),
-            -1, 5, 5, null, null, null, null),
-        r.ParameterMirrorImpl(r'_resourceUri', 32870, 52,
-            const prefix0.Reflector(), -1, 5, 5, null, null, null, null)
+        r.ParameterMirrorImpl(r'_data', 2130022, 52, const prefix0.Reflector(),
+            -1, 9, 10, null, null, null, null)
       ],
       <Type>[
         prefix1.Character,
-        prefix2.MediaDetails,
-        prefix3.BaseResponse,
-        prefix4.Media,
+        prefix2.Media,
+        prefix3.MediaDetails,
+        prefix4.BaseResponse,
         int,
         String,
-        const m.TypeValue<List<prefix4.Media>>().type,
+        const m.TypeValue<List<prefix2.Media>>().type,
         List,
         String,
         const m.TypeValue<Map<String, dynamic>>().type,
@@ -291,10 +291,10 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r'comics': (dynamic instance) => instance.comics,
         r'series': (dynamic instance) => instance.series,
         r'history': (dynamic instance) => instance.history,
+        r'resourceUri': (dynamic instance) => instance.resourceUri,
         r'castList': (dynamic instance) => instance.castList,
         r'cast': (dynamic instance) => instance.cast,
-        r'data': (dynamic instance) => instance.data,
-        r'resourceUri': (dynamic instance) => instance.resourceUri
+        r'data': (dynamic instance) => instance.data
       },
       {
         r'id=': (dynamic instance, value) => instance.id = value,
@@ -307,9 +307,9 @@ final _data = <r.Reflectable, r.ReflectorData>{
         r'comics=': (dynamic instance, value) => instance.comics = value,
         r'series=': (dynamic instance, value) => instance.series = value,
         r'history=': (dynamic instance, value) => instance.history = value,
-        r'data=': (dynamic instance, value) => instance.data = value,
         r'resourceUri=': (dynamic instance, value) =>
-            instance.resourceUri = value
+            instance.resourceUri = value,
+        r'data=': (dynamic instance, value) => instance.data = value
       },
       null,
       [])
