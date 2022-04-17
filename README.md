@@ -3,15 +3,17 @@
 
 ## Informações
 
-<p>Flutter:</p>
+Flutter:
 <br>
 Versão: 2.10.3
 
-<p>Dart:</p>
+<br><br>
+Dart:
 <br>
 Versão: 2.16.1
 
-<p>Testes:</p>
+<br><br>
+Testes:
 <br>
 API - 100%
 <br>
