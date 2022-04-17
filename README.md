@@ -4,7 +4,8 @@
 ## Informações
 
 Flutter:
-<p>Versão: 2.10.3</p>
+<br>
+Versão: 2.10.3
 
 Dart:
 <p>Versão: 2.16.1</p>
