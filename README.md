@@ -1,23 +1,12 @@
 # Marvel
-<p>Prova de mobile usando a API da Marvel</p>
+<p>Prova de mobile usando a API da [Marvel](https://developer.marvel.com/)</p>
 
 ## Informações
 
-Flutter:
-<br>
-Versão: 2.10.3
-
-<br>
-Dart:
-<br>
-Versão: 2.16.1
-
-<br>
-Testes:
-<br>
-API - 100%
-<br>
-Pages - 100%
+- `Flutter`: Versão 2.10.3
+- `Dart`: Versão 2.16.1
+- `Testes API`: 100%
+- `Testes Pages`: 100%
 
 ## Bibliotecas usadas:
 
