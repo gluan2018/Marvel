@@ -3,16 +3,19 @@
 
 ## Informações
 
-Flutter:
+<p>Flutter:</p>
 <br>
 Versão: 2.10.3
 
-Dart:
-<p>Versão: 2.16.1</p>
+<p>Dart:</p>
+<br>
+Versão: 2.16.1
 
-Testes:
-<p>API - 100%</p>
-<p>Pages - 100%</p>
+<p>Testes:</p>
+<br>
+API - 100%
+<br>
+Pages - 100%
 
 ## Bibliotecas usadas:
 
